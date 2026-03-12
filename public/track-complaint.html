@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Complaint | PS-CRM</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gov-bg {
+            background-color: #f8fafc;
+        }
+
+        .gov-blue {
+            background-color: #1e3a8a;
+        }
+
+        .gov-text {
+            color: #1e3a8a;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 20px;
+            height: 100%;
+            width: 2px;
+            background: #e2e8f0;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body class="gov-bg text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="gov-blue text-white shadow-lg relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="C:\hackathon\public\gov_logo.png" alt="Gov Logo"
+                            class="h-10 w-auto mr-3 rounded-md shadow-sm border border-blue-400">
+                        <span class="font-bold text-xl tracking-wide">PS-CRM Portal</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                    <a href="complaint-form.html"
+                        class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">File Complaint</a>
+                    <a href="track-complaint.html"
+                        class="px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">Track
+                        Status</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">About
+                        System</a>
+                    <div class="border-l border-blue-400 h-6 mx-2"></div>
+                    <a href="officer-panel.html"
+                        class="text-sm px-3 py-2 border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                        Login</a>
+                    <a href="admin-dashboard.html"
+                        class="text-sm px-3 py-2 bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                        class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-800 transition text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-blue-900 absolute w-full z-50 shadow-xl border-t border-blue-800"
+            id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                <a href="complaint-form.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">File Complaint</a>
+                <a href="track-complaint.html"
+                    class="block px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">Track
+                    Status</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">About
+                    System</a>
+                <a href="officer-panel.html"
+                    class="block px-3 py-2 mt-4 text-sm border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                    Login</a>
+                <a href="admin-dashboard.html"
+                    class="block px-3 py-2 mt-2 text-sm bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Search Box -->
+            <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100 mb-8 mt-6">
+                <div class="gov-blue px-6 py-4 text-white flex items-center justify-between">
+                    <h2 class="text-xl font-bold"><i class="fas fa-search mr-2 text-yellow-400"></i> Complaint Status
+                        Tracker</h2>
+                </div>
+                <div class="p-6">
+                    <form id="trackForm" class="flex flex-col sm:flex-row gap-4">
+                        <div class="flex-grow">
+                            <label class="sr-only">Complaint ID</label>
+                            <input type="text" id="trackId" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition uppercase text-lg"
+                                placeholder="Enter Registration ID (e.g. CMD-1001)">
+                        </div>
+                        <button type="submit" id="trackBtn"
+                            class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none transition whitespace-nowrap">
+                            Track
+                        </button>
+                    </form>
+                    <p id="errorMsg" class="text-red-500 text-sm mt-2 hidden font-medium"></p>
+                </div>
+            </div>
+
+            <!-- Tracker Output -->
+            <div id="tracker" class="hidden bg-white shadow-xl rounded-2xl border border-gray-100 p-6 md:p-8">
+
+                <div
+                    class="border-b border-gray-200 pb-4 mb-6 flex flex-col md:flex-row justify-between items-start md:items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold gov-text font-mono" id="dispId">CMD-XXXX</h3>
+                        <p class="text-sm font-medium text-gray-500 mt-1" id="dispCat">Category | Area</p>
+                    </div>
+                    <div class="mt-4 md:mt-0 text-right">
+                        <span id="dispStatusBadge"
+                            class="inline-flex items-center px-3 py-1 rounded-full text-sm font-bold bg-green-100 text-green-800 border border-green-200">
+                            Status
+                        </span>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="text-sm font-bold text-gray-800 uppercase mb-2">Issue Description</h4>
+                    <p id="dispDesc"
+                        class="text-gray-600 text-sm bg-gray-50 p-4 rounded-lg border border-gray-100 italic"></p>
+
+                    <div class="mt-4 grid grid-cols-2 gap-4 bg-blue-50 p-4 rounded-lg">
+                        <div>
+                            <p class="text-xs text-gray-500">Assigned Department</p>
+                            <p class="font-bold text-gray-800 text-sm" id="dispDept">-</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500">Expected Resolution</p>
+                            <p class="font-bold text-gray-800 text-sm" id="dispSLA">-</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="text-sm font-bold text-gray-800 uppercase mb-4 border-b pb-2">Tracking Timeline</h4>
+
+                <div class="relative pl-6 py-2 timeline-container">
+
+                    <!-- Received -->
+                    <div class="relative z-10 mb-8 pl-8 flex flex-col timeline-milestone" data-status="Received">
+                        <div
+                            class="absolute left-0 w-4 h-4 rounded-full border-4 border-white bg-gray-300 transform -translate-x-[11px] shadow">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Registration Received</h4>
+                        <p class="text-xs text-gray-500 mt-1" id="timeReceived">Waiting Details...</p>
+                    </div>
+
+                    <!-- Assigned -->
+                    <div class="relative z-10 mb-8 pl-8 flex flex-col timeline-milestone" data-status="Assigned">
+                        <div
+                            class="absolute left-0 w-4 h-4 rounded-full border-4 border-white bg-gray-300 transform -translate-x-[11px] shadow">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Assigned to Department</h4>
+                        <p class="text-xs text-gray-500 mt-1" id="timeAssigned">-</p>
+                    </div>
+
+                    <!-- In Progress -->
+                    <div class="relative z-10 mb-8 pl-8 flex flex-col timeline-milestone" data-status="In Progress">
+                        <div
+                            class="absolute left-0 w-4 h-4 rounded-full border-4 border-white bg-gray-300 transform -translate-x-[11px] shadow">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Work In Progress</h4>
+                        <p class="text-xs text-gray-500 mt-1" id="timeProgress">-</p>
+                    </div>
+
+                    <!-- Resolved -->
+                    <div class="relative z-10 pl-8 flex flex-col timeline-milestone" data-status="Resolved">
+                        <div
+                            class="absolute left-0 w-4 h-4 rounded-full border-4 border-white bg-gray-300 transform -translate-x-[11px] shadow">
+                        </div>
+                        <h4 class="font-bold text-gray-800">Resolved & Closed</h4>
+                        <p class="text-xs text-gray-500 mt-1" id="timeResolved">-</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.getElementById('trackForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('trackId').value.trim().toUpperCase();
+            if (!id) return;
+
+            const btn = document.getElementById('trackBtn');
+            const errorMsg = document.getElementById('errorMsg');
+            const tracker = document.getElementById('tracker');
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            errorMsg.classList.add('hidden');
+            tracker.classList.add('hidden');
+
+            try {
+                const apiUrl = window.location.protocol === 'file:'
+                    ? `http://localhost:3000/api/complaints/${id}`
+                    : `/api/complaints/${id}`;
+
+                const res = await fetch(apiUrl);
+
+                let data;
+                try {
+                    data = await res.json();
+                } catch (e) {
+                    throw new Error("Server returned an invalid response.");
+                }
+
+                if (!res.ok) {
+                    errorMsg.textContent = data.error || "Invalid ID. Try CMD-1001";
+                    errorMsg.classList.remove('hidden');
+                    return;
+                }
+
+                // Populate UI
+                document.getElementById('dispId').textContent = data.id;
+                document.getElementById('dispCat').innerHTML = `<i class="fas fa-tag mr-1 text-gray-400"></i> ${data.category} | <i class="fas fa-map-marker-alt ml-2 mr-1 text-gray-400"></i> ${data.location}`;
+
+                document.getElementById('dispDesc').textContent = `"${data.description}"`;
+                document.getElementById('dispDept').textContent = data.department;
+
+                const deadline = new Date(data.resolutionDeadline);
+                const isDelayed = deadline < new Date() && data.status !== 'Resolved';
+
+                document.getElementById('dispSLA').innerHTML = `
+                    <span class="${isDelayed ? 'text-red-600 font-bold' : ''}">${deadline.toLocaleDateString()}</span>
+                    ${isDelayed ? '<i class="fas fa-exclamation-triangle text-red-500 ml-1" title="Escalated / Delayed"></i>' : ''}
+                `;
+
+                // Badge colors
+                const badge = document.getElementById('dispStatusBadge');
+                badge.textContent = data.status;
+                badge.className = "inline-flex items-center px-3 py-1 rounded-full text-sm font-bold shadow-sm ";
+                if (data.status === 'Resolved') badge.className += "bg-green-100 text-green-800 border border-green-200";
+                else if (data.status === 'In Progress') badge.className += "bg-blue-100 text-blue-800 border border-blue-200";
+                else if (data.status === 'Assigned') badge.className += "bg-yellow-100 text-yellow-800 border border-yellow-200";
+                else badge.className += "bg-gray-100 text-gray-800 border border-gray-200";
+
+                // Timeline logic
+                const statuses = ['Received', 'Assigned', 'In Progress', 'Resolved'];
+                let currentIndex = statuses.indexOf(data.status);
+                if (currentIndex === -1) currentIndex = 0; // Default Received
+
+                // Reset timeline
+                document.querySelectorAll('.timeline-milestone').forEach((node, index) => {
+                    const dot = node.querySelector('div'); // the absolute div
+                    const dStatus = node.getAttribute('data-status');
+                    const timeEl = node.querySelector('p');
+
+                    dot.className = "absolute left-0 w-4 h-4 rounded-full border-4 border-white transform -translate-x-[11px] shadow transition-colors duration-500 ";
+
+                    if (index <= currentIndex) {
+                        dot.className += "bg-blue-600";
+                    } else {
+                        dot.className += "bg-gray-300";
+                    }
+
+                    if (dStatus === 'Received') timeEl.textContent = new Date(data.filedAt).toLocaleString();
+                    else if (dStatus === data.status) timeEl.textContent = new Date(data.updatedAt).toLocaleString();
+                    else if (index < currentIndex) timeEl.textContent = "Estimated in past"; // mock time
+                    else timeEl.textContent = "-";
+                });
+
+                tracker.classList.remove('hidden');
+
+            } catch (err) {
+                console.error("Tracking Error:", err);
+                errorMsg.textContent = "Network error or Server might be down. Please ensure node server.js is running.";
+                errorMsg.classList.remove('hidden');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = 'Track';
+            }
+        });
+    </script>
+</body>
+
+</html>

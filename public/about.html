@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About System | PS-CRM</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gov-bg {
+            background-color: #f8fafc;
+        }
+
+        .gov-blue {
+            background-color: #1e3a8a;
+        }
+
+        .gov-text {
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body class="gov-bg text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="gov-blue text-white shadow-lg relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="C:\hackathon\public\gov_logo.png" alt="Gov Logo"
+                            class="h-10 w-auto mr-3 rounded-md shadow-sm border border-blue-400">
+                        <span class="font-bold text-xl tracking-wide">PS-CRM Portal</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                    <a href="complaint-form.html"
+                        class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">File Complaint</a>
+                    <a href="track-complaint.html"
+                        class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Track Status</a>
+                    <a href="about.html"
+                        class="px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">About
+                        System</a>
+                    <div class="border-l border-blue-400 h-6 mx-2"></div>
+                    <a href="officer-panel.html"
+                        class="text-sm px-3 py-2 border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                        Login</a>
+                    <a href="admin-dashboard.html"
+                        class="text-sm px-3 py-2 bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                        class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-800 transition text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-blue-900 absolute w-full z-50 shadow-xl border-t border-blue-800"
+            id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                <a href="complaint-form.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">File Complaint</a>
+                <a href="track-complaint.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Track Status</a>
+                <a href="about.html"
+                    class="block px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">About
+                    System</a>
+                <a href="officer-panel.html"
+                    class="block px-3 py-2 mt-4 text-sm border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                    Login</a>
+                <a href="admin-dashboard.html"
+                    class="block px-3 py-2 mt-2 text-sm bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+
+        <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
+            <div class="gov-blue px-8 py-10 text-white text-center">
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Smart Public Service CRM</h1>
+                <p class="text-xl text-blue-100 mb-2">A Digital Command Center for Civic Governance</p>
+                <div class="inline-flex mt-4 bg-yellow-400 text-blue-900 font-bold px-4 py-1 rounded-full text-sm">
+                    Hackathon Prototype Version 1.0
+                </div>
+            </div>
+
+            <div class="p-8 md:p-12 prose max-w-none text-gray-700">
+                <h2 class="text-2xl font-bold gov-text mb-4 border-b pb-2">Mission Statement</h2>
+                <p class="mb-6 leading-relaxed">
+                    The Smart Public Service CRM (PS-CRM) is an initiative to bridge the gap between citizens and local
+                    government authorities. It aims to eliminate traditional bureaucratic delays by providing a
+                    transparent, accountable, and automated grievance redressal system.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 my-10">
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <div
+                            class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Our Objective</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            To ensure that every civic issue reported by a citizen is acknowledged, tracked, and
+                            resolved within a strict Service Level Agreement (SLA) timeframe.
+                        </p>
+                    </div>
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100">
+                        <div
+                            class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center text-xl mb-4">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">Data Privacy</h3>
+                        <p class="text-sm text-gray-600 leading-relaxed">
+                            Citizen contact information is kept confidential and is only visible to the nodal officer
+                            assigned to resolve the specific complaint, preventing misuse of data.
+                        </p>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-bold gov-text mb-4 border-b pb-2">Technology Stack</h2>
+                <ul class="space-y-3 mb-8">
+                    <li class="flex items-start">
+                        <i class="fas fa-laptop-code text-blue-500 mt-1 mr-3"></i>
+                        <div><strong>Frontend:</strong> HTML5, Vanilla JS, Tailwind CSS via CDN, FontAwesome for icons,
+                            Chart.js for analytics. Built to be fully responsive for mobile citizens and desktop admins.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-server text-green-500 mt-1 mr-3"></i>
+                        <div><strong>Backend:</strong> Node.js with Express framework exposing RESTful APIs. Supports
+                            file uploads using Multer for evidence management.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-microchip text-yellow-500 mt-1 mr-3"></i>
+                        <div><strong>Smart Features:</strong> Automated department routing based on complaint
+                            categorization, dynamic SLA tracking, and real-time dashboard analytics.</div>
+                    </li>
+                </ul>
+
+            </div>
+
+            <div class="bg-gray-50 px-8 py-6 border-t border-gray-200 text-center">
+                <p class="text-sm font-medium text-gray-500 uppercase tracking-wider mb-4">Built By</p>
+                <div class="flex items-center justify-center space-x-2 gov-text font-bold text-lg">
+                    <i class="fas fa-code"></i> <span>Developed for the Hackathon</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
+            &copy; 2026 Smart Public Service CRM. Hackathon Project Demo.
+        </div>
+    </footer>
+</body>
+
+</html>

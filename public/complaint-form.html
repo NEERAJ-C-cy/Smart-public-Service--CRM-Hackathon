@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Complaint | PS-CRM</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .gov-bg {
+            background-color: #f8fafc;
+        }
+
+        .gov-blue {
+            background-color: #1e3a8a;
+        }
+
+        .gov-text {
+            color: #1e3a8a;
+        }
+    </style>
+</head>
+
+<body class="gov-bg text-slate-800 flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="gov-blue text-white shadow-lg relative z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center">
+                        <img src="C:\hackathon\public\gov_logo.png" alt="Gov Logo"
+                            class="h-10 w-auto mr-3 rounded-md shadow-sm border border-blue-400">
+                        <span class="font-bold text-xl tracking-wide">PS-CRM Portal</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="index.html" class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                    <a href="complaint-form.html"
+                        class="px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">File
+                        Complaint</a>
+                    <a href="track-complaint.html"
+                        class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Track Status</a>
+                    <a href="about.html" class="px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">About
+                        System</a>
+                    <div class="border-l border-blue-400 h-6 mx-2"></div>
+                    <a href="officer-panel.html"
+                        class="text-sm px-3 py-2 border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                        Login</a>
+                    <a href="admin-dashboard.html"
+                        class="text-sm px-3 py-2 bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button type="button" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')"
+                        class="inline-flex items-center justify-center p-2 rounded-md hover:bg-blue-800 transition text-white">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden bg-blue-900 absolute w-full z-50 shadow-xl border-t border-blue-800"
+            id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="index.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Home</a>
+                <a href="complaint-form.html"
+                    class="block px-3 py-2 rounded-md font-medium bg-blue-800 hover:bg-blue-700 transition">File
+                    Complaint</a>
+                <a href="track-complaint.html"
+                    class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">Track Status</a>
+                <a href="about.html" class="block px-3 py-2 rounded-md font-medium hover:bg-blue-700 transition">About
+                    System</a>
+                <a href="officer-panel.html"
+                    class="block px-3 py-2 mt-4 text-sm border border-blue-400 rounded-md hover:bg-blue-800 transition">Officer
+                    Login</a>
+                <a href="admin-dashboard.html"
+                    class="block px-3 py-2 mt-2 text-sm bg-yellow-500 text-blue-900 rounded-md hover:bg-yellow-400 font-bold transition">Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white shadow-xl rounded-2xl overflow-hidden border border-gray-100">
+                <div class="gov-blue px-6 py-6 border-b border-gray-200 text-white">
+                    <h2 class="text-2xl font-bold"><i class="fas fa-edit mr-2 text-yellow-500"></i> New Complaint
+                        Registration</h2>
+                    <p class="mt-1 text-blue-200 text-sm">Please fill out the form below to register a grievance with
+                        the public authorities.</p>
+                </div>
+
+                <div class="p-8">
+                    <!-- Success Alert (Hidden by default) -->
+                    <div id="successMessage" class="hidden mb-6 bg-green-50 border-l-4 border-green-500 p-4 rounded-md">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-check-circle text-green-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm font-medium text-green-800">Complaint submitted successfully!</p>
+                                <p class="mt-1 text-sm text-green-700">Your Complaint ID is: <strong
+                                        id="complaintIdSpan"
+                                        class="font-bold text-lg bg-green-200 px-2 py-1 rounded"></strong></p>
+                                <p class="mt-2 text-xs text-green-600">Please keep this ID safe for tracking purposes.
+                                </p>
+                                <div class="mt-4">
+                                    <a href="track-complaint.html"
+                                        class="text-green-800 underline font-semibold text-sm">Track Complaint</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="complaintForm" class="space-y-6">
+
+                        <!-- Personal Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Full Name <span
+                                        class="text-red-500">*</span></label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                    placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Mobile Number <span
+                                        class="text-red-500">*</span></label>
+                                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}"
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                    placeholder="10-digit mobile number">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Email <span
+                                    class="text-gray-400 font-normal">(Optional)</span></label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                placeholder="johndoe@example.com">
+                        </div>
+
+                        <hr class="border-gray-200">
+
+                        <!-- Complaint Details -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Complaint Category <span
+                                        class="text-red-500">*</span></label>
+                                <select id="category" name="category" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition bg-white">
+                                    <option value="" disabled selected>Select category...</option>
+                                    <option value="Water">Water Supply</option>
+                                    <option value="Electricity">Electricity</option>
+                                    <option value="Roads">Roads & Public Works</option>
+                                    <option value="Sanitation">Sanitation & Garbage</option>
+                                    <option value="Police">Law & Order (No Emergency)</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">Incident Area / Location
+                                    <span class="text-red-500">*</span></label>
+                                <input type="text" id="location" name="location" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                    placeholder="Locality, Landmark, Pincode">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Detailed Description <span
+                                    class="text-red-500">*</span></label>
+                            <textarea id="description" name="description" rows="4" required
+                                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+                                placeholder="Describe the issue in detail..."></textarea>
+                        </div>
+
+                        <!-- Upload Photo -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Upload Evidence
+                                (Photo/Video)</label>
+                            <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg bg-gray-50 hover:bg-gray-100 transition cursor-pointer"
+                                onclick="document.getElementById('file-upload').click()">
+                                <div class="space-y-1 text-center">
+                                    <i class="fas fa-cloud-upload-alt text-4xl text-gray-400 mb-2"></i>
+                                    <div class="flex text-sm text-gray-600 justify-center">
+                                        <label for="file-upload"
+                                            class="relative cursor-pointer bg-white rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500 px-1">
+                                            <span>Upload a file</span>
+                                            <input id="file-upload" name="photo" type="file" class="sr-only"
+                                                onchange="document.getElementById('file-name').textContent = this.files[0] ? this.files[0].name : '';">
+                                        </label>
+                                        <p class="pl-1">or drag and drop</p>
+                                    </div>
+                                    <p class="text-xs text-gray-500">PNG, JPG, GIF up to 5MB</p>
+                                    <p id="file-name" class="text-sm font-bold text-blue-700 mt-2"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+                            <button type="button" id="demoBtn"
+                                class="text-blue-600 hover:text-blue-800 font-semibold underline text-sm transition">
+                                <i class="fas fa-magic mr-1"></i> Fill Dummy Data
+                            </button>
+                            <button type="submit" id="submitBtn"
+                                class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 transition w-full sm:w-auto flex justify-center">
+                                <span>Submit Grievance</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-white py-6 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-400">
+            &copy; 2026 Smart Public Service CRM. Hackathon Project Demo.
+        </div>
+    </footer>
+
+    <script>
+        // Fill Dummy Data functionality
+        document.getElementById('demoBtn')?.addEventListener('click', () => {
+            document.getElementById('name').value = 'Rahul Sharma';
+            document.getElementById('mobile').value = '9876543210';
+            document.getElementById('email').value = 'rahul.sharma@example.com';
+            document.getElementById('category').value = 'Roads';
+            document.getElementById('location').value = 'Sector 15, Near Metro Station, Vashi';
+            document.getElementById('description').value = 'There is a massive pothole in the middle of the road causing major traffic disruptions and posing a risk of accidents. Needs urgent fixing.';
+        });
+
+        document.getElementById('complaintForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const form = e.target;
+            const btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+
+            const formData = new FormData();
+            formData.append('name', document.getElementById('name').value);
+            formData.append('mobile', document.getElementById('mobile').value);
+            formData.append('email', document.getElementById('email').value);
+            formData.append('category', document.getElementById('category').value);
+            formData.append('location', document.getElementById('location').value);
+            formData.append('description', document.getElementById('description').value);
+
+            const fileInput = document.getElementById('file-upload');
+            if (fileInput.files[0]) {
+                formData.append('photo', fileInput.files[0]);
+            }
+
+            try {
+                const apiUrl = window.location.protocol === 'file:'
+                    ? 'http://localhost:3000/api/complaints'
+                    : '/api/complaints';
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                let data;
+                try {
+                    data = await response.json();
+                } catch (e) {
+                    throw new Error("Server did not return a valid JSON response. Is the server running?");
+                }
+
+                if (response.ok && data.success) {
+                    form.reset();
+                    document.getElementById('file-name').textContent = '';
+                    form.classList.add('hidden');
+                    document.getElementById('successMessage').classList.remove('hidden');
+                    document.getElementById('complaintIdSpan').textContent = data.complaintId;
+
+                    // Optional scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    throw new Error(data.error || "Server responded with an error.");
+                }
+            } catch (error) {
+                console.error("Submission Error:", error);
+                alert('Error submitting complaint: ' + error.message + '\n\nPlease ensure the backend server is running (node server.js).');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = '<span>Submit Grievance</span>';
+            }
+        });
+    </script>
+</body>
+
+</html>
